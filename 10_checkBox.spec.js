@@ -5,21 +5,18 @@ const {test,expect} = require('@playwright/test');
 
 test('Checkbox', async({page})=>{
 
-    await page.goto('https://formstone.it/components/checkbox/');
+    await page.goto('https://testpages.eviltester.com/styled/basic-html-form-test.html');
 
     //Handling single checkbox
-    await page.locator("//input[@value='1' and @type='checkbox']").check();
-    await expect(await page.locator("//input[@value='1' and @type='checkbox']")).toBeChecked();
-    await expect(await page.locator("//input[@value='1' and @type='checkbox']").isChecked()).toBeTruthy();
-    await expect(await page.locator("//input[@value='2' and @type='checkbox']").isChecked()).toBeFalsy();
-    await page.waitForTimeout(1000);
-    await page.locator("//input[@value='1' and @type='checkbox']").uncheck();
+    await page.locator("//input[@value='cb1']").check();
+    await expect(await page.locator("//input[@value='cb1']")).toBeChecked();
+    await expect(await page.locator("//input[@value='cb1']").isChecked()).toBeTruthy();
+    await expect(await page.locator("//input[@value='cb2']").isChecked()).toBeFalsy();
 
     //Handling multiple checkboxes(Using array and for loop)
     const checkboxlocators = [  
-        "//input[@value='1' and @type='checkbox']",
-        "//input[@value='2' and @type='checkbox']",
-        "//input[@value='4' and @type='checkbox']"
+        "//input[@value='cb1']",
+        "//input[@value='cb2']",
                             ];
     
     for(let locator of checkboxlocators){
